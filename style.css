@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 832px;
+    background-color: #1A1A1A;
+}
+.card-container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.To-do-card {
+    position: absolute;
+    width: 280px;
+    height: 672px;
+    min-width: 280px;
+    min-height: 672px;
+    top: 120px;
+    left: 50px;
+    padding: 20px 0px 0px 0px;
+    gap: 10px;
+    border-radius: 12px 12px 12px 12px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    background: #101010;
+}
+.To-do-card h3 {
+    position: absolute;
+    left: 42px;
+    width: Fill (200px)px;
+    height: Hug (22px)px;
+    gap: 0px;
+    opacity: 0px;
+    color: white;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.78px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+#list-container{
+    height: 600px;
+    position: relative;
+    top: 10px;
+}
+#list-container li{
+    margin-top: 10px;
+    height: 50px;
+    width: 100px;
+    position: relative;
+    background-color: #333333;
+    list-style: none;
+    width: 148px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    color: #d9d9d9;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14.52px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    top: 25px;
+    user-select: none;
+    cursor: pointer;
+    height: Hug (54px)px;
+    padding: 12px;
+    gap: 20px;
+    border-radius: 8px 0px 0px 0px;
+    opacity: 0px;
+}
+#list-container li::before{
+    position: absolute;
+    left: 200px;
+    content: "";
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    padding: 12px 0px 0px 0px;
+    gap: 8px;
+    border-radius: 8px 0px 0px 0px;
+    opacity: 0px;
+
+}
+
+.circle{
+    top: 40px;
+    left: 17px;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    content: "";
+    background-image: url(/images/white.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+#task{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    color: aliceblue;
+}
+#list-container li span{
+    margin-right: 800px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    left: 20px;
+    align-items: center;
+    position: absolute;
+    left: 200px;
+    content: "";
+    background-image: url(/images/red-trash-can-icon.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    padding: 12px 0px 0px 0px;
+    gap: 8px;
+    border-radius: 8px 0px 0px 0px;
+    opacity: 0px;
+}

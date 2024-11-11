@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="To-do-card">
+                <div class="circle"></div>
+                <h3>To do</h3>
+                <ul id="list-container">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <input id="input-box" type="text" placeholder="Add your task" onkeydown="if (event.keyCode == 13)
+    document.getElementById('buttonAdd').click()">
+<button onclick="addTask()" id="buttonAdd">+</button>
+  
+
+    <script src="app.js"></script>
+</body>
+</html>
