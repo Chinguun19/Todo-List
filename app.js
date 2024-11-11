@@ -13,6 +13,10 @@ function addTask () {
         let span = document.createElement("span");
         span.innerHTML = "";
         li.appendChild(span);
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('editButton');
+        li.appendChild(newDiv);
+
     }
     inputBox.value = "";
     saveData();
@@ -26,5 +30,16 @@ listContainer.addEventListener("click", function(e){
     else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
         saveData();
-    }
+    } else if(e.target.tagName === "editButton");
+     e.target.parentElement.contentEditable = false;
+
 }, false);
+
+
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
+}
+showTask()
