@@ -51,23 +51,24 @@ body {
 }
 #list-container{
     max-width: 280px;;
-    max-height: 620px;
     position: relative;
     top: 10px;
     overflow-y: scroll;
     overflow-x:hidden;
+    max-height: 67vh;
 }
 #list-container li{
-    text-decoration: none;
-    max-height: fit-content;
-    max-height: fit-content;
-    right: 20px;
-    padding-left: 30px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
     width: 240px;
-    margin-top: 10px;
+    height: fit-content;
+    text-decoration: none;
+    right: 20px;
+    padding-left: 25px;
+    padding-right: 50px;
+    margin-bottom: 25px;
     position: relative;
     background-color: #1A1A1A;
     list-style: none;
@@ -76,17 +77,17 @@ body {
     text-overflow: ellipsis;
     color: #d9d9d9;
     font-family: Inter;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 300;
     line-height: 14.52px;
-    text-align: left;
+    text-align: justify;
+    text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     top: 25px;
     user-select: none;
     cursor: pointer;
     height: Hug (54px)px;
-    padding-right: 50px;
     gap: 20px;
     border-radius: 8px;
     opacity: 0px;
@@ -95,7 +96,7 @@ body {
 }
 
 .circle{
-    top: 18px;
+    align-items: center;
     left: 17px;
     height: 16px;
     width: 16px;
@@ -114,7 +115,8 @@ body {
     color: aliceblue;
 }
 #list-container li span{
-    top: 40%;
+    display: flex;
+    align-items: center;
     position: absolute;
     width: 14px;
     height: 14px;
@@ -127,11 +129,11 @@ body {
 }
 
 #list-container li::before{
-    top: 50%;
+    display: flex;
+    left: 10px;
+    align-items: center;
     position: absolute;
     content: "";
-    left: 2px;
-    position: absolute;
     height: 18px;
     width: 18px;
     border-radius: 50%;
@@ -151,8 +153,9 @@ body {
 }
 
 .editButton {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    top: 40%;
     right: 30px;
     height: 16px;
     width: 16px;
@@ -161,3 +164,4 @@ body {
     background-size:cover ;
     background-image: url(/images/pencil.png);
 }
+
