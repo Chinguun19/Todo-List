@@ -9,23 +9,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
-<body>q
+<body>
     <div class="container">
         <div class="card-container">
-            <div class="To-do-card">
+            <div class="To-do-card" id="toDoCard">
                 <div class="circle"></div>
                 <h3>To do</h3>
                 <ul id="list-container">
                 </ul>
             </div>
+
+            <div class="To-do-card" id="progressCard">
+                <div class="yellowCircle"></div>
+                <h3>Progress In</h3>
+                <ul id="list-container" class="list-container">
+                </ul>
+            </div>
+            
         </div>
     </div>
-<div class="input">
-    <input id="input-box" type="text" placeholder="Add your task" onkeydown="if (event.keyCode == 13)
-    document.getElementById('buttonAdd').click()">
-<button onclick="addTask()" id="buttonAdd">+</button>
+    <button id="openModal">Add task</button>
+<div class="modal" id="modal"> 
+    <div class="modal-inner">
+        <div class="Sumbit">
+        <div class="input">
+            <label id="" for="cars">:</label>
+
+        <select id="option">
+        <option value="Todo">To do</option>
+        <option value="inprogress">In progress</option>
+        <option value="done">Done</option>
+        <option value="blocked">Blocked</option>
+        </select>
+            <input id="input-box" type="text" placeholder="Add your task" onkeydown="if (event.keyCode == 13)
+            document.getElementById('buttonAdd').click()">
+        <button onclick="addTask()" id="buttonAdd">+</button>
+        </div>
+        <button id="closeModal">Sumbit</button>
+    </div>
+    </div>
 </div>
-  
 
     <script src="app.js"></script>
 </body>
