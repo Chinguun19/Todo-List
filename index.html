@@ -25,17 +25,33 @@
                 <ul id="list-container" class="list-container">
                 </ul>
             </div>
+
+
+            <div class="To-do-card" id="doneCard">
+                <div class="greenCircle"></div>
+                <h3>Done</h3>
+                <ul id="list-container" class="list-container">
+                </ul>
+            </div>
+
+            <div class="To-do-card" id="blockedCard">
+                <div class="redCircle"></div>
+                <h3>Blocked</h3>
+                <ul id="list-container" class="list-container">
+                </ul>
+            </div>
             
         </div>
     </div>
     <button id="openModal">Add task</button>
 <div class="modal" id="modal"> 
     <div class="modal-inner">
-        <div class="Sumbit">
         <div class="input">
-            <label id="" for="cars">:</label>
+            <h1>Enter Task</h1>
+            <label id="" for="cars"></label>
 
-        <select id="option">
+        <select id="option" placeholder="Status">
+        <option value="">Status</option>
         <option value="Todo">To do</option>
         <option value="inprogress">In progress</option>
         <option value="done">Done</option>
@@ -46,7 +62,6 @@
         <button onclick="addTask()" id="buttonAdd">+</button>
         </div>
         <button id="closeModal">Sumbit</button>
-    </div>
     </div>
 </div>
 

@@ -4,7 +4,8 @@ let openBtn = document.getElementById("openModal");
 let closeBtn = document.getElementById("closeModal");
 let modal = document.getElementById("modal");
 let option = document.getElementById("option")
-
+let doneCard = document.querySelector('#doneCard').querySelector('.list-container')
+let blockedCard = document.querySelector('#blockedCard').querySelector('.list-container')
 let todoCard = document.getElementById("toDoCard")
 let progressCard = document.querySelector('#progressCard').querySelector('.list-container')
 
@@ -33,6 +34,7 @@ function addTask () {
         let newDiv = document.createElement('div');
         newDiv.classList.add('editButton');
         li.appendChild(newDiv);
+        
         saveData();
 
     }
@@ -51,6 +53,36 @@ function addTask () {
         saveData();
 
     }
+    else if(option.value == "done"){
+
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        doneCard.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "";
+        li.appendChild(span);
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('editButton');
+        li.appendChild(newDiv);
+
+        saveData();
+
+    }
+    else if(option.value == "blocked"){
+
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        blockedCard.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "";
+        li.appendChild(span);
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('editButton');
+        li.appendChild(newDiv);
+
+        saveData();
+
+    }
 
 
 
@@ -58,7 +90,39 @@ function addTask () {
     saveData();
 }
 
+doneCard.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData()
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    } else if (e.target.classList.contains("editButton")) {
+        const li = e.target.parentElement;
+        li.contentEditable = false
+        e.target.parentElement.contentEditable = false
+        li.focus();
+    }
+}, false);
+
 progressCard.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData()
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    } else if (e.target.classList.contains("editButton")) {
+        const li = e.target.parentElement;
+        li.contentEditable = false
+        e.target.parentElement.contentEditable = false
+        li.focus();
+    }
+}, false);
+
+blockedCard.addEventListener("click", function(e){
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
         saveData()
