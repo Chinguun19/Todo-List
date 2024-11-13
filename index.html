@@ -43,7 +43,21 @@
             
         </div>
     </div>
+
+
+ <div class="editModal" id="editModal">
+    <div class="editModal-inner">
+        <div class="input">
+            <input type="text" id="editBox">
+            <button id="editClose" onclick="">Sumbit</button>
+
+        </div>
+    </div>
+
+
+ </div>    
     <button id="openModal">Add task</button>
+
 <div class="modal" id="modal"> 
     <div class="modal-inner">
         <div class="input">
@@ -53,17 +67,19 @@
         <select id="option" placeholder="Status">
         <option value="">Status</option>
         <option value="Todo">To do</option>
-        <option value="inprogress">In progress</option>
+        <option value="inprogress">Progress In</option>
         <option value="done">Done</option>
         <option value="blocked">Blocked</option>
         </select>
             <input id="input-box" type="text" placeholder="Add your task" onkeydown="if (event.keyCode == 13)
             document.getElementById('buttonAdd').click()">
-        <button onclick="addTask()" id="buttonAdd">+</button>
+        <button onclick="addTask()" id="buttonAdd">ADD</button>
         </div>
-        <button id="closeModal">Sumbit</button>
+        <button id="closeModal">Done</button>
     </div>
 </div>
+
+
 
     <script src="app.js"></script>
 </body>

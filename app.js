@@ -1,5 +1,7 @@
 let inputBox = document.getElementById("input-box")
 let listContainer = document.getElementById("list-container");
+let editOpenBtn = document.getElementById("")
+let editCloseBtn = document.getElementById("editClose")
 let openBtn = document.getElementById("openModal");
 let closeBtn = document.getElementById("closeModal");
 let modal = document.getElementById("modal");
@@ -104,6 +106,7 @@ doneCard.addEventListener("click", function(e){
         e.target.parentElement.contentEditable = false
         li.focus();
     }
+    saveData()
 }, false);
 
 progressCard.addEventListener("click", function(e){
@@ -120,6 +123,7 @@ progressCard.addEventListener("click", function(e){
         e.target.parentElement.contentEditable = false
         li.focus();
     }
+    saveData()
 }, false);
 
 blockedCard.addEventListener("click", function(e){
@@ -134,8 +138,11 @@ blockedCard.addEventListener("click", function(e){
         const li = e.target.parentElement;
         li.contentEditable = false
         e.target.parentElement.contentEditable = false
+        editButton.contentEditable = false
         li.focus();
+
     }
+    saveData()
 }, false);
 
 
@@ -151,19 +158,44 @@ listContainer.addEventListener("click", function(e){
         e.target.parentElement.remove();
         saveData();
     } else if (e.target.classList.contains("editButton")) {
+        modal.classList.add("open");
         const li = e.target.parentElement;
-        li.contentEditable = false;
-        e.target.parentElement.contentEditable = false
-        li.focus();
+        inputBox.value = li.innerText
+        closeBtn.onclick = function() {
+            li.innerText = inputBox.value;
+            let span = document.createElement("span");
+            span.innerHTML = "";
+            li.appendChild(span);
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('editButton');
+            li.appendChild(newDiv);
+            if(option.value == "inprogress"){
+                progressCard.appendChild(li)
+            } else if (option.value == "done") {
+                doneCard.appendChild(li)
+            } else if (option.value == "blocked"){
+                blockedCard.appendChild(li)
+            }
+        };
+        
     }  
+    
 }, false);
+
+
 
 
 
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
+    localStorage.setItem("data2", doneCard.innerHTML);
+    localStorage.setItem("data3",  progressCard.innerHTML);
+    localStorage.setItem("data4",  blockedCard.innerHTML);
 }
 function showTask(){
     listContainer.innerHTML = localStorage.getItem("data");
+    doneCard.innerHTML = localStorage.getItem("data2");
+    progressCard.innerHTML = localStorage.getItem("data3");
+    blockedCard.innerHTML = localStorage.getItem("data4s");
 }
 showTask()
