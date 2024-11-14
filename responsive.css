@@ -1,7 +1,11 @@
-*{
-    box-sizing: border-box;
-    font-family: Inter;
-}
+
+
+@media screen and (max-width: 414px) {
+    *{
+        box-sizing: border-box;
+        font-family: Inter;
+    }
+
 body {
 
     width: 100%;
@@ -13,11 +17,10 @@ body {
     justify-content: center;
 }
 .card-container {
-    margin-left: 200px;
-    display: flex;
-    gap: 100px;
-    justify-content: center;
-    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    margin-right: 2000px;
+
 }
 .To-do-card {
     display: flex;
@@ -159,7 +162,6 @@ body {
 
 
 }
-
 .redCircle{
     align-items: center;
     left: 17px;
@@ -443,5 +445,7 @@ text-decoration-skip-ink: none;
     border-radius: 4%;
     border: 0;
     cursor: pointer;
+
+}
 
 }
