@@ -1,16 +1,19 @@
 let inputBox = document.getElementById("input-box")
+let editBox = document.getElementById("edit-box")
 let listContainer = document.getElementById("list-container");
-let editOpenBtn = document.getElementById("")
-let editCloseBtn = document.getElementById("editClose")
+let editOpenBtn = document.getElementById("edid-modal")
+//let editCloseBtn = document.getElementById("edit-modal")
 let openBtn = document.getElementById("openModal");
 let closeBtn = document.getElementById("closeModal");
+let closeEditModal = document.getElementById("closeModalEdit")
+let editModal = document.getElementById("edit-modal")
 let modal = document.getElementById("modal");
 let option = document.getElementById("option")
+let editOption = document.getElementById("editOption")
 let doneCard = document.querySelector('#doneCard').querySelector('.list-container')
 let blockedCard = document.querySelector('#blockedCard').querySelector('.list-container')
 let todoCard = document.getElementById("toDoCard")
 let progressCard = document.querySelector('#progressCard').querySelector('.list-container')
-
 
 openBtn.addEventListener("click", () => {
     modal.classList.add("open"); 
@@ -19,6 +22,10 @@ openBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
     modal.classList.remove("open");
 })
+closeEditModal.addEventListener("click", () =>{
+    editModal.classList.remove("open");
+})
+
 
 
 function addTask () {
@@ -101,11 +108,29 @@ doneCard.addEventListener("click", function(e){
         e.target.parentElement.remove();
         saveData();
     } else if (e.target.classList.contains("editButton")) {
+        editModal.classList.add("open");
         const li = e.target.parentElement;
-        li.contentEditable = false
-        e.target.parentElement.contentEditable = false
-        li.focus();
-    }
+        editBox.value = li.innerText
+        closeEditModal.onclick = function() {
+            li.innerText = editBox.value;
+            let span = document.createElement("span");
+            span.innerHTML = "";
+            li.appendChild(span);
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('editButton');
+            li.appendChild(newDiv);
+            if(editOption.value == "inprogress"){
+                progressCard.appendChild(li)
+            } else if (editOption.value == "done") {
+                doneCard.appendChild(li)
+            } else if (editOption.value == "blocked"){
+                blockedCard.appendChild(li)
+            } else if (editOption.value == "Todo"){
+                listContainer.appendChild(li)
+            }
+        };
+        
+    }  
     saveData()
 }, false);
 
@@ -118,11 +143,29 @@ progressCard.addEventListener("click", function(e){
         e.target.parentElement.remove();
         saveData();
     } else if (e.target.classList.contains("editButton")) {
+        editModal.classList.add("open");
         const li = e.target.parentElement;
-        li.contentEditable = false
-        e.target.parentElement.contentEditable = false
-        li.focus();
-    }
+        editBox.value = li.innerText
+        closeEditModal.onclick = function() {
+            li.innerText = editBox.value;
+            let span = document.createElement("span");
+            span.innerHTML = "";
+            li.appendChild(span);
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('editButton');
+            li.appendChild(newDiv);
+            if(editOption.value == "inprogress"){
+                progressCard.appendChild(li)
+            } else if (editOption.value == "done") {
+                doneCard.appendChild(li)
+            } else if (editOption.value == "blocked"){
+                blockedCard.appendChild(li)
+            } else if (editOption.value == "Todo"){
+                listContainer.appendChild(li)
+            }
+        };
+        
+    }  
     saveData()
 }, false);
 
@@ -135,13 +178,29 @@ blockedCard.addEventListener("click", function(e){
         e.target.parentElement.remove();
         saveData();
     } else if (e.target.classList.contains("editButton")) {
+        editModal.classList.add("open");
         const li = e.target.parentElement;
-        li.contentEditable = false
-        e.target.parentElement.contentEditable = false
-        editButton.contentEditable = false
-        li.focus();
-
-    }
+        editBox.value = li.innerText
+        closeEditModal.onclick = function() {
+            li.innerText = editBox.value;
+            let span = document.createElement("span");
+            span.innerHTML = "";
+            li.appendChild(span);
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('editButton');
+            li.appendChild(newDiv);
+            if(editOption.value == "inprogress"){
+                progressCard.appendChild(li)
+            } else if (editOption.value == "done") {
+                doneCard.appendChild(li)
+            } else if (editOption.value == "blocked"){
+                blockedCard.appendChild(li)
+            } else if (editOption.value == "Todo"){
+                listContainer.appendChild(li)
+            }
+        };
+        
+    }  
     saveData()
 }, false);
 
@@ -158,27 +217,31 @@ listContainer.addEventListener("click", function(e){
         e.target.parentElement.remove();
         saveData();
     } else if (e.target.classList.contains("editButton")) {
-        modal.classList.add("open");
+        editModal.classList.add("open");
         const li = e.target.parentElement;
-        inputBox.value = li.innerText
-        closeBtn.onclick = function() {
-            li.innerText = inputBox.value;
+        editBox.value = li.innerText
+        closeEditModal.onclick = function() {
+            li.innerText = editBox.value;
             let span = document.createElement("span");
             span.innerHTML = "";
             li.appendChild(span);
             let newDiv = document.createElement('div');
             newDiv.classList.add('editButton');
             li.appendChild(newDiv);
-            if(option.value == "inprogress"){
+            if(editOption.value == "inprogress"){
                 progressCard.appendChild(li)
-            } else if (option.value == "done") {
+            } else if (editOption.value == "done") {
                 doneCard.appendChild(li)
-            } else if (option.value == "blocked"){
+            } else if (editOption.value == "blocked"){
                 blockedCard.appendChild(li)
+            } else if (editOption.value == "Todo"){
+                listContainer.appendChild(li)
             }
         };
         
     }  
+
+    saveData()  
     
 }, false);
 
