@@ -445,3 +445,10 @@ text-decoration-skip-ink: none;
     cursor: pointer;
 
 }
+#count {
+    position: absolute;
+    left: 250px;
+    top: -5px;
+    color: gray;
+    font-size: 18px;
+}

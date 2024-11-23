@@ -14,6 +14,16 @@ let doneCard = document.querySelector('#doneCard').querySelector('.list-containe
 let blockedCard = document.querySelector('#blockedCard').querySelector('.list-container')
 let todoCard = document.getElementById("toDoCard")
 let progressCard = document.querySelector('#progressCard').querySelector('.list-container')
+let taskCount = listContainer.children.length;
+
+
+function updateCounter() {
+    const taskCount = listContainer.children.length; // Dynamically count children
+    document.getElementById('count').textContent = taskCount;
+}
+
+
+
 
 openBtn.addEventListener("click", () => {
     modal.classList.add("open"); 
@@ -43,7 +53,8 @@ function addTask () {
         let newDiv = document.createElement('div');
         newDiv.classList.add('editButton');
         li.appendChild(newDiv);
-        
+        taskCount++;
+        updateCounter()
         saveData();
 
     }
@@ -215,6 +226,8 @@ listContainer.addEventListener("click", function(e){
     }
     else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
+        taskCount --;
+        updateCounter()
         saveData();
     } else if (e.target.classList.contains("editButton")) {
         editModal.classList.add("open");
@@ -242,7 +255,7 @@ listContainer.addEventListener("click", function(e){
     }  
 
     saveData()  
-    
+
 }, false);
 
 
@@ -250,15 +263,19 @@ listContainer.addEventListener("click", function(e){
 
 
 function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
+    updateCounter()
+    localStorage.setItem("data1", listContainer.innerHTML);
     localStorage.setItem("data2", doneCard.innerHTML);
     localStorage.setItem("data3",  progressCard.innerHTML);
     localStorage.setItem("data4",  blockedCard.innerHTML);
+  
 }
 function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+    updateCounter()
+    listContainer.innerHTML = localStorage.getItem("data1");
     doneCard.innerHTML = localStorage.getItem("data2");
     progressCard.innerHTML = localStorage.getItem("data3");
-    blockedCard.innerHTML = localStorage.getItem("data4s");
+    blockedCard.innerHTML = localStorage.getItem("data4");
 }
 showTask()
+
