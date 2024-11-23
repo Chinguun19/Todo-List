@@ -18,7 +18,7 @@ let taskCount = listContainer.children.length;
 
 
 function updateCounter() {
-    const taskCount = listContainer.children.length; // Dynamically count children
+    const taskCount = listContainer.children.length; 
     document.getElementById('count').textContent = taskCount;
 }
 
