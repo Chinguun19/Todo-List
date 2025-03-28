@@ -1,454 +1,638 @@
-*{
-    box-sizing: border-box;
-    font-family: Inter;
-}
-body {
 
-    width: 100%;
-    height: 832px;
-    background-color: #1A1A1A;
-}
+
 .container {
     display: flex;
     justify-content: center;
+    width: 100%;
+    padding: 20px;
 }
+
 .card-container {
-    margin-left: 200px;
     display: flex;
-    gap: 100px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    gap: 5%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
+
 .To-do-card {
-    display: flex;
-    margin-left: 200px;
-    border: #333333 1px solid;
-    position: absolute;
     width: 280px;
+    min-width: 250px;
     height: 672px;
-    min-width: 280px;
-    min-height: 672px;
-    top: 250px;
-    left: 50px;
-    padding: 20px 0px 0px 0px;
-    gap: 10px;
-    border-radius: 12px 12px 12px 12px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
     background: #101010;
-    margin-left: 350px;
-}
-#progressCard {
-    position: absolute;
-    left: 400px;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 20px 10px 0;
+    margin: 20px 10px;
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
-#doneCard {
-    position: absolute;
-    left: 750px;
-
+.To-do-card:hover {
+    transform: scale(1.02);
 }
-#blockedCard {
-    position: absolute;
-    left: 1120px;
+
+@media screen and (max-width: 1600px) {
+    .card-container {
+        gap: 3%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .card-container {
+        gap: 2%;
+    }
+
+    .To-do-card {
+        width: 250px;
+        height: 600px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .To-do-card {
+        margin: 15px 0;
+        width: 80%;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .To-do-card {
+        width: 90%;
+        margin: 10px 0;
+    }
 }
 
 .To-do-card h3 {
-    bottom: 615px;
-    position: absolute;
-    left: 42px;
-    width: Fill (200px)px;
-    height: Hug (22px)px;
-    gap: 0px;
-    opacity: 0px;
     color: white;
-    font-family: Inter;
     font-size: 18px;
     font-weight: 700;
-    line-height: 21.78px;
+    margin-bottom: 15px;
     text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
 }
-#list-container{
-    max-width: 280px;;
-    position: relative;
-    top: 10px;
-    overflow-y: scroll;
-    overflow-x:hidden;
+
+#list-container {
+    max-width: 100%;
     max-height: 66vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 10px;
 }
-#list-container li{
-    justify-content: center;
+
+#list-container li {
     display: flex;
     align-items: center;
-    min-height: 50px;
-    width: 240px;
-    height: fit-content;
-    text-decoration: none;
-    right: 20px;
-    padding-left: 25px;
-    padding-right: 50px;
-    margin-bottom: 25px;
     position: relative;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
     background-color: #1A1A1A;
-    list-style: none;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-overflow: ellipsis;
-    color: #d9d9d9;
-    font-family: Inter;
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 14.52px;
-    text-align: justify;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    top: 25px;
-    user-select: none;
-    cursor: pointer;
-    height: Hug (54px)px;
-    gap: 20px;
     border-radius: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    color: #d9d9d9;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    word-wrap: break-word;
+    user-select: none;
+    transition: background-color 0.3s ease;
 }
 
-.circle{
-    top: 18px;
-    align-items: center;
-    left: 17px;
-    height: 14px;
-    width: 14px;
+#list-container li:hover {
+    background-color: #2A2A2A;
+}
+
+.circle, .yellowCircle, .greenCircle, .redCircle {
     position: absolute;
-    content: "";
-    border-radius: 50%;
-    background-color: white;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.yellowCircle{
-    align-items: center;
-    left: 17px;
-    height: 24px;
-    width: 24px;
-    top: 14px;
+
+#list-container li span, .editButton {
     position: absolute;
-    content: "";
-    background-image: url(/images/yellow-solid-Circle-png-image.png);
-    background-position: center;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
     background-size: contain;
-    background-repeat: no-repeat;
-
-}
-.greenCircle{
-    align-items: center;
-    left: 17px;
-    height: 18px;
-    width: 15px;
-    top: 16px;
-    position: absolute;
-    content: "";
-    background-image: url(/images/greencircle.png);
     background-position: center;
-    background-size: contain;
     background-repeat: no-repeat;
-
-
+    cursor: pointer;
 }
 
-.redCircle{
+.modal, .edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
     align-items: center;
-    left: 17px;
-    height: 18px;
-    width: 15px;
-    top: 17px;
-    position: absolute;
-    content: "";
-    background-image: url(/images/pngegg.png);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-
+    justify-content: center;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
 }
-#task{
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    color: aliceblue;
-}
-#list-container li span{
 
+.modal.open, .edit-modal.open {
+    opacity: 1;
+    z-index: 999;
+}
+
+.modal-inner {
+    background-color: #1E1E1E;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#input-box, #edit-box, #option, #editOption {
+    width: 100%;
+    max-width: 290px;
+    height: 48px;
+    border: 2px solid #333333;
+    background: none;
+    color: #999999;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#openModal, #buttonAdd, #closeModal, #closeModalEdit {
+    position: flex;
+    justify-content: center;
+    background-color: #00a300;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    height: 50px;
+    width: 30%;
+}
+
+#openModal:active, #buttonAdd:active, 
+#closeModal:active, #closeModalEdit:active {
+    opacity: 0.8;
+}
+
+#count {
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    color: gray;
+    font-size: 18px;
+}
+
+/* Scrollbar Styling */
+#list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#list-container::-webkit-scrollbar-track {
+    background: #2A2A2A;
+}
+
+#list-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+#list-container::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1A1A1A;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.To-do-card {
+    width: 280px;
+    min-width: 250px;
+    height: 672px;
+    background: #101010;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 20px 10px 0;
+    margin: 20px 10px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+#list-container li span {
     display: flex;
     align-items: center;
     position: absolute;
-    width: 14px;
-    height: 14px;
-    left: 215px;
+    width: 20px;
+    height: 20px;
+    right: 50px;
     content: "";
     background-image: url(/images/delete.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-#list-container li::before{
-    display: flex;
-    left: 10px;
-    align-items: center;
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    background-image: url(/images/whiteglow.png);
-
+#list-container li span:hover {
+    transform: scale(1.2);
 }
 
-
-#list-container li.checked{
-    color: #555;
-    text-decoration: line-through;
-}
-
-#list-container li.checked::before{
-    background-image: url(/images/green\ checked.png);
-}
-
-.editButton  {
+.editButton {
     display: flex;
     align-items: center;
     cursor: pointer;
-    right: 30px;
-    height: 16px;
-    width: 16px;
-    content: "";
+    right: 20px;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    background-size:cover ;
+    background-size: cover;
     background-image: url(/images/edit.png);
+    transition: transform 0.2s ease;
 }
-.modal.open {
+
+.editButton:hover {
+    transform: scale(1.2);
+}
+
+.modal, .edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.open, .edit-modal.open {
     opacity: 1;
     z-index: 999;
 }
-#closeModal {
-    position: fixed;
-    justify-content: center;
-    display: flex;
-    margin-left: 45px;
-    margin-top: -70px;
-    align-items: center;
-    font-weight: 600;
-    color: white;
-    width: 290px;
-    height: 44px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: green;
-    border-radius: 4%;
-    border: 0;
-    cursor: pointer;
-}
-button:active {
-    opacity: 0.8;
-}
 
-.edit-modal{
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 0.3s ease-in-out;
-    z-index: -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    
-}
-
-.modal {
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 0.3s ease-in-out;
-    z-index: -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
 .modal-inner {
-    background-color: #1E1E1E ;
-    width: 380px;
+    background-color: #1E1E1E;
+    width: 90%;
+    max-width: 380px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
 }
+
+#closeModal, #closeModalEdit {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 290px;
+    height: 44px;
+    background-color: #00a300;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#closeModal:hover, #closeModalEdit:hover {
+    background-color: #009300;
+}
+
+#input-box, #edit-box {
+    width: 100%;
+    max-width: 290px;
+    height: 48px;
+    border: 2px solid #333333;
+    background: none;
+    color: #999999;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+#option, #editOption {
+    width: 100%;
+    max-width: 290px;
+    height: 48px;
+    border: 2px solid #333333;
+    background: none;
+    color: #999999;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .modal-inner {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #closeModal, #closeModalEdit {
+        max-width: 250px;
+    }
+
+    #input-box, #edit-box, #option, #editOption {
+        max-width: 250px;
+    }
+}
+
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
 .edit-modal.open {
     opacity: 1;
-    z-index: 999;
-
+    visibility: visible;
+    z-index: 1000;
 }
 
-
-#openModal {
-    font-family: Inter;
-    line-height: 19.36px;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-    top: 52px;
-    right: 30vh;
-    position: absolute;
-    border-radius: 4px;
-    gap: 10px;
-    padding-top: 20px;
-    height: 44px;
-    width: 109px;
-    background-color: #00a300;
-    padding-bottom: 35px;
+.edit-modal .modal-inner {
+    background-color: #1E1E1E;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.input {
-    width: 370px;
-    height: 376px;
-    top: 228px;
-    left: 455px;
-    gap: 0px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    
+.edit-modal.open .modal-inner {
+    transform: scale(1);
+    opacity: 1;
 }
-#input-box {
-    top: 300px;
-    font-family: Inter;
-font-size: 16px;
-font-weight: 400;
-line-height: 19.36px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-    margin-left: -145px;
-    position: fixed;
-    text-align: center;
-    width: 290px;
-    height: 43px;
-    border: #999999 2px solid;
-    margin-top: 170px;
-    border-color: #333333;
-    background: none;
-    color: #999999;
-}
-#edit-box{
-    top: 300px;
-    font-family: Inter;
-font-size: 16px;
-font-weight: 400;
-line-height: 19.36px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-    margin-left: -145px;
-    position: fixed;
-    text-align: center;
-    width: 290px;
-    height: 43px;
-    border: #999999 2px solid;
-    margin-top: 170px;
-    border-color: #333333;
-    background: none;
-    color: #999999;
 
-}
-#buttonAdd {
-    margin-left: 155px;
-    margin-top: 100px;
-    position: fixed;
-    cursor: pointer;
-    font-size: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 24px;
-    border: none;
-    background-color: #00a300;
-
-}
-#option {
-    margin-left: -145px;
-    width: 290px;
-    height: 48px;
-    position: fixed;
-    border: #333333 2px solid;
-    top: 46.6%;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.36px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    background: none;
-    color: #999999;
-}
-#editOption {
-    margin-left: -145px;
-    width: 290px;
-    height: 48px;
-    position: fixed;
-    border: #333333 2px solid;
-    top: 46.6%;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.36px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    background: none;
-    color: #999999;
-
-}
-.input h1{
-    left: 43%;
-    color: white;
-    position: fixed;
-}
-#closeModalEdit{
-    position: fixed;
-    justify-content: center;
+.edit-modal .input {
     display: flex;
-    margin-left: 45px;
-    margin-top: -70px;
+    flex-direction: column;
     align-items: center;
-    font-weight: 600;
-    color: white;
-    width: 290px;
-    height: 44px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: green;
-    border-radius: 4%;
-    border: 0;
-    cursor: pointer;
-
+    gap: 20px;
 }
-#count {
-    position: absolute;
-    left: 250px;
-    top: -5px;
-    color: gray;
+
+.edit-modal .input h1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#editOption, #edit-box {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: #2A2A2A;
+    border: 2px solid #333333;
+    color: #999999;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+#editOption:focus, #edit-box:focus {
+    outline: none;
+    border-color: #00a300;
+    box-shadow: 0 0 10px rgba(0, 163, 0, 0.3);
+}
+
+#editOption option {
+    background-color: #1E1E1E;
+    color: #999999;
+}
+
+#closeModalEdit {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: #00a300;
+    color: white;
+    border: none;
+    border-radius: 8px;
     font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#closeModalEdit:hover {
+    background-color: #009300;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 163, 0, 0.3);
+}
+
+#closeModalEdit:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 163, 0, 0.2);
+}
+
+@media screen and (max-width: 480px) {
+    .edit-modal .modal-inner {
+        width: 95%;
+        padding: 20px;
+        max-width: 350px;
+    }
+
+    #editOption, #edit-box, #closeModalEdit {
+        max-width: 280px;
+    }
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1000;
+}
+
+.modal .modal-inner {
+    background-color: #1E1E1E;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal.open .modal-inner {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal .input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal .input h1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#option, #input-box {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: #2A2A2A;
+    border: 2px solid #333333;
+    color: #999999;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+#option:focus, #input-box:focus {
+    outline: none;
+    border-color: #00a300;
+    box-shadow: 0 0 10px rgba(0, 163, 0, 0.3);
+}
+
+#option option {
+    background-color: #1E1E1E;
+    color: #999999;
+}
+
+#buttonAdd, #closeModal {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: #00a300;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#buttonAdd:hover, #closeModal:hover {
+    background-color: #009300;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 163, 0, 0.3);
+}
+
+#buttonAdd:active, #closeModal:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 163, 0, 0.2);
+}
+
+.modal #buttonAdd {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .modal .modal-inner {
+        width: 95%;
+        padding: 20px;
+        max-width: 350px;
+    }
+
+    #option, #input-box, #buttonAdd, #closeModal {
+        max-width: 280px;
+    }
 }
